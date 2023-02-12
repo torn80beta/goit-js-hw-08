@@ -1,5 +1,5 @@
 import { galleryItems } from './gallery-items.js';
-import SimpleLightbox from 'simplelightbox/dist/simple-lightbox.esm';
+import SimpleLightbox from 'simplelightbox';
 // Change code below this line
 
 const galleryEl = document.querySelector('.gallery');
