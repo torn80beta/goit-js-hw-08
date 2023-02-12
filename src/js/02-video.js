@@ -4,7 +4,9 @@ var throttle = require('lodash.throttle');
 const iframe = document.querySelector('iframe');
 const player = new Player(iframe);
 
-let time = JSON.parse(localStorage.getItem('videoplayer-current-time')).seconds;
+const time = JSON.parse(
+  localStorage.getItem('videoplayer-current-time')
+).seconds;
 
 player
   .setCurrentTime(time)
@@ -27,6 +29,7 @@ player.on(
   'timeupdate',
   throttle(function (data) {
     localStorage.setItem('videoplayer-current-time', JSON.stringify(data));
+    // throttling check:
     //console.log(JSON.parse(localStorage.getItem('videoplayer-current-time')));
   }, 1000)
 );
