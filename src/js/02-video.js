@@ -4,12 +4,17 @@ var throttle = require('lodash.throttle');
 const iframe = document.querySelector('iframe');
 const player = new Player(iframe);
 
-const time = JSON.parse(
-  localStorage.getItem('videoplayer-current-time')
-).seconds;
+function load(key) {
+  try {
+    const time = localStorage.getItem(key);
+    return time === null ? undefined : JSON.parse(time).seconds;
+  } catch (error) {
+    console.error('Set state error: ', error.message);
+  }
+}
 
 player
-  .setCurrentTime(time)
+  .setCurrentTime(load('videoplayer-current-time'))
   .then(function (seconds) {
     // seconds = the actual time that the player seeked to
   })
@@ -30,6 +35,6 @@ player.on(
   throttle(function (data) {
     localStorage.setItem('videoplayer-current-time', JSON.stringify(data));
     // throttling check:
-    //console.log(JSON.parse(localStorage.getItem('videoplayer-current-time')));
+    console.log(JSON.parse(localStorage.getItem('videoplayer-current-time')));
   }, 1000)
 );
