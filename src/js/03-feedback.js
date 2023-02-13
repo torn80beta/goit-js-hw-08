@@ -1,7 +1,7 @@
 const throttle = require('lodash.throttle');
-mailEl = document.querySelector('input[type="email"]');
-textAreaEl = document.querySelector('textarea[name="message"]');
-formEl = document.querySelector('form.feedback-form');
+const mailEl = document.querySelector('input[type="email"]');
+const textAreaEl = document.querySelector('textarea[name="message"]');
+const formEl = document.querySelector('form.feedback-form');
 
 const LOCALSTORAGE_KEY = 'feedback-form-state';
 let storedMail;
