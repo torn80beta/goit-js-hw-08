@@ -43,7 +43,7 @@ function submitData(event) {
   console.log(data);
   data.email = '';
   data.message = '';
-  localStorage.clear();
+  localStorage.removeItem(LOCALSTORAGE_KEY);
   mailEl.value = '';
   textAreaEl.value = '';
 }
